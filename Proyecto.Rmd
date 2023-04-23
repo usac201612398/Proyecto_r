@@ -37,4 +37,29 @@ monthly %>%
   head()
 
 ```
+```{r}
+#5 El efecto del lavado de manos
+  #5.1
+dt_monthly <- monthly %>%
+  mutate(proportion_deaths=deaths/births)
+ggplot(dt_monthly, aes(x=date, y=proportion_deaths)) + geom_line()
+```
+
+```{r}
+  #5.2
+ggplot(dt_monthly, aes(x=date, y=proportion_deaths)) + geom_line() + xlab("Date") + ylab("Proportion_deaths") + theme_classic()
+```
+```{r}
+  #5.3
+death_by_year <- monthly %>%
+  mutate(proportion_deaths=deaths/births) %>%
+  mutate(year=year(date)) %>%
+  group_by(year)%>%
+  summarise(mean_pdeaths=mean(proportion_deaths))
+death_by_year
+```
+```{r}
+  #5.4
+ggplot(death_by_year, aes(x=year, y=mean_pdeaths)) + geom_bar(stat="identity")
+```
 
