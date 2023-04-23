@@ -27,4 +27,14 @@ dt_yearly <-yearly %>%
 
 ggplot(dt_yearly, aes(x=year, y=proportion_deaths,color=clinic)) + geom_line()
 ```
+```{r}
+#4. Comienza el lavado de manos
+  #4.1
+monthly <- read_csv("deaths_clinic_1.csv")
+  #4.2 & 4.3
+monthly %>%
+  mutate(proportion_deaths=deaths/births) %>%
+  head()
+
+```
 
