@@ -75,4 +75,12 @@ dt_monthly <-monthly %>%
   mutate(proportion_deaths=deaths/births)
 ggplot(dt_monthly, aes(x=date,y=proportion_deaths,color=handwashing_started)) + geom_line() + xlab("Date") + ylab("Proportion_deaths") + theme_classic() 
 ```
+```{r}
+#7. ¿Mas lavado de manos menos muertes?
+  #7.1, 7.2 & 7.3
+month_summary <- dt_monthly %>%
+  group_by(handwashing_started)%>%
+  summarise(mean_pdeaths=mean(proportion_deaths))
+month_summary
+```
 
