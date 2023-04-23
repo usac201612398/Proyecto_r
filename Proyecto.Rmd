@@ -1,0 +1,10 @@
+```{r}
+#Proyecto
+
+#1. Conocimiento de los datos
+
+  #1.1 Cargue el paquete tidyverse.
+library(tidyverse)
+yearly = read_csv(death)
+```
+
