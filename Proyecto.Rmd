@@ -62,4 +62,17 @@ death_by_year
   #5.4
 ggplot(death_by_year, aes(x=year, y=mean_pdeaths)) + geom_bar(stat="identity")
 ```
+```{r}
+#6. Los resultados del lavado de manos
+  #6.1 
+monthly %>%
+  mutate(handwashing_stard=year(date)>=1847)
+```
+```{r}
+  #6.2 & 6.3
+dt_monthly <-monthly %>%
+  mutate(handwashing_started=year(date)>=1847)%>%
+  mutate(proportion_deaths=deaths/births)
+ggplot(dt_monthly, aes(x=date,y=proportion_deaths,color=handwashing_started)) + geom_line() + xlab("Date") + ylab("Proportion_deaths") + theme_classic() 
+```
 
