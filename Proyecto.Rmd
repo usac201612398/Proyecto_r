@@ -83,4 +83,22 @@ month_summary <- dt_monthly %>%
   summarise(mean_pdeaths=mean(proportion_deaths))
 month_summary
 ```
+```{r}
+
+#8. Análisis estadístico de los datos del lavado de manos
+dt_monthly_antes <-monthly %>%
+  mutate(handwashing_started=year(date)>=1847)%>%
+  mutate(proportion_deaths=deaths/births) %>%
+  filter(handwashing_started == FALSE)%>%
+  select(proportion_deaths)
+
+dt_monthly_despues <- monthly %>%
+  mutate(handwashing_started=year(date)>=1847)%>%
+  mutate(proportion_deaths=deaths/births)%>%
+  filter(handwashing_started == TRUE)%>%
+  select(proportion_deaths)
+
+t.test(dt_monthly_antes,dt_monthly_despues,mu = 0, paired = FALSE, var.equal = FALSE,conf.level = 0.95)
+
+```
 
